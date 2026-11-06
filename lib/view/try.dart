@@ -1,63 +1,69 @@
 
+
 import 'package:flutter/material.dart';
 
 
-class ButtonApp extends StatelessWidget{
+class ButtonApp extends StatelessWidget {
 
   const ButtonApp({
     super.key,
   });
 
+
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      body:ButtonTypes(enabled:true)
+    return  Scaffold(
+
+      body: ButtonStyles()
     );
   }
 }
 
-class ButtonTypes extends StatelessWidget{
-  final bool enabled;
+class ButtonStyles extends StatelessWidget{
 
-  const ButtonTypes({
+  const ButtonStyles({
     super.key,
-    required this.enabled
   });
-
 
   @override
   Widget build(BuildContext context){
-    
-    return Padding(
+     return Padding(
       padding: .all(0),
 
       child: Row(
-        children:<Widget>[
-          SampleBtn()
+        children: <Widget>[
+          ButtonGroup(enabled: true),
         ]
-      )
-    );
+      ),
+     );
   }
 }
 
 
-class SampleBtn extends StatelessWidget{
-  VoidCallback ? onPressed = (){} : null;
-  final onPressed
-  const SampleBtn({
+class ButtonGroup extends StatelessWidget{
+
+  final bool enabled;
+  const ButtonGroup({
     super.key,
+    required this.enabled,
   });
 
   @override
-  Widget build(
+  Widget build(BuildContext context){
+    VoidCallback? onPressed = enabled ? (){} : null;
     return Padding(
-      padding: .all(),
+      padding: .all(0),
+
       child: Column(
-        MainAxisAlignment: MainAxisAlignment(0)
+        mainAxisAlignment: .spaceEvenly,
+        
         children: <Widget>[
-          FilledButton(onPressed: onPressed, const Text('button'))
+          ElevatedButton(
+            onPressed: onPressed,
+            child: Text('Button'),
+          )
         ]
       )
-    )
-  )
+    );
+  }
 }
